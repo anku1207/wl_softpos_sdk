@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/mark</item>
+        <item name="bottomSheetDialogTheme">@style/Theme_BottomSheet</item>
+        <item name="colorControlNormal">@color/colorNormal</item>
+        <item name="colorControlActivated">@color/colorActivate</item>
+    </style>
+
+    <style name="Theme_BottomSheet"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:backgroundDimEnabled">true</item>
+
+    </style>
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottomsheet</item>
+        <!--        <item name="behavior_peekHeight">@dimen/custom_peek_height</item>-->
+
+    </style>
+</resources>

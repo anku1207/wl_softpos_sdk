@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewmodel"
+            type="com.example.wl_softpos_sdk.view.collect.transactionStatus.TransactionStatusViewModel" />
+
+        <variable
+            name="model"
+            type="com.example.wl_softpos_sdk.common.model.TransactionStatusModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_screen"
+        tools:context=".view.transactionstatus.TransactionStatusActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_transaction_status"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_status_small"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_status"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.transactionStatus}"
+            android:textColor="@color/text_red"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/lbl_transaction_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="PENDING" />
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/success_tick"-->
+<!--            android:layout_width="@dimen/_30sdp"-->
+<!--            android:layout_height="@dimen/_30sdp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/sms_sent_message"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_fileName="tick_lottie.json"-->
+<!--            app:lottie_loop="false" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sms_sent_message"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_link_has_been_sent_to"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@id/tv_mobile_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_mobile_email"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.mobileNumber}"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_32sdp"
+            app:layout_constraintBottom_toTopOf="@+id/appCompatTextView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="9820485853" />
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
+
+            app:layout_constraintBottom_toTopOf="@+id/sms_sent_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/add_to_khata_summary_illustration" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@+id/amountToAdd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/amountToAdd"
+            style="@style/TextViewStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_32sdp"
+            android:text="@{String.format(@string/rs,model.amount)}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/amount_text_view_size"
+            app:layout_constraintBottom_toTopOf="@+id/btn_refresh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="1000" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_refresh"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+
+            android:text="@string/check_status"
+            android:textAlignment="center"
+            android:drawableStart="@drawable/ic_refresh_black_24dp"
+            android:drawablePadding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnResendLink"
+            />
+<!--        android:onClick="@{()->viewmodel.getTransactionStatus()}"-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnResendLink"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+
+            android:text="@string/resend_link"
+            android:textAlignment="center"
+            android:drawableStart="@drawable/ic_refresh_black_24dp"
+            android:drawablePadding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_refresh"
+            tools:visibility="gone"
+            />
+
+<!--        android:onClick="@{()->viewmodel.onResendLink()}"-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

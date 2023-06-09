@@ -1,0 +1,39 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:color="@android:color/white"
+    tools:targetApi="lollipop">
+
+
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+
+            <gradient
+                android:startColor="@color/colorSecond"
+                android:endColor="@color/colorSecond"
+                android:angle="135"/>
+
+            <corners
+                android:bottomLeftRadius="@dimen/_36sdp"
+                android:bottomRightRadius="@dimen/_36sdp"
+                android:topLeftRadius="@dimen/_36sdp"
+                android:topRightRadius="@dimen/_36sdp" />
+
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+
+            <gradient
+                android:startColor="@color/colorSecond"
+                android:endColor="@color/colorSecond"
+                android:angle="180"/>
+
+            <corners
+                android:bottomLeftRadius="@dimen/_36sdp"
+                android:bottomRightRadius="@dimen/_36sdp"
+                android:topLeftRadius="@dimen/_36sdp"
+                android:topRightRadius="@dimen/_36sdp" />
+
+        </shape>
+    </item>
+</ripple>

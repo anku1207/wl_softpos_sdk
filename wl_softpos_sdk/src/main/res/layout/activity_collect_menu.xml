@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.wl_softpos_sdk.view.collect.menu.CollectMenuViewmodel" />
+
+        <variable
+            name="model"
+            type="com.example.wl_softpos_sdk.common.model.CollectModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_screen">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_overlay">
+
+                <com.example.wl_softpos_sdk.view.arclayout.ArcLayout
+                    android:id="@+id/arcLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:arc_cropDirection="cropOutside"
+                    app:arc_height="@dimen/arc_height_small"
+                    app:arc_position="bottom"
+                    android:elevation="@dimen/arc_layout_elevation"
+                    app:layout_constraintHeight_percent="0.17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtTotalPayableLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tyle="@style/TextViewStyle"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:text="Total Payable"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/Amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextViewStyleBold"
+                        android:text="@{String.format(@string/rs,model.totalAmount)}"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/amount_text_view_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTotalPayableLabel" />
+
+
+
+                </LinearLayout>
+                </com.example.wl_softpos_sdk.view.arclayout.ArcLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.85"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        >
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtSelectPaymentLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_32sdp"
+                            android:gravity="center"
+                            android:padding="@dimen/_6sdp"
+                            android:text="Select A Mode Of Payment"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/_12sdp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <LinearLayout
+                            android:id="@+id/imageView3"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:background="@drawable/bg_collect_menu"
+                            android:elevation="6dp"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                            app:layout_constraintTop_toBottomOf="@id/txtSelectPaymentLabel">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/rlSendLink"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="@{()-> viewModel.onQRCodeScan()}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icSendLink"
+                                    android:layout_width="@dimen/_54sdp"
+                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_centerHorizontal="true"
+                                    app:layout_constraintBottom_toTopOf="@id/txtSendLink"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_scan_qr_illustration" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/txtSendLink"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:background="@drawable/bg_collect_menu_lbl"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_8sdp"
+                                    android:text="@string/scan_bharat_qr"
+                                    android:textColor="@color/btn_text"
+                                    android:textSize="@dimen/_10ssp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/imageView2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:background="@drawable/bg_collect_menu"
+                            android:elevation="6dp"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/txtSelectPaymentLabel">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/rlSendQrCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="@{()-> viewModel.onSendLink()}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icScanQR"
+                                    android:layout_width="@dimen/_54sdp"
+                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_above="@+id/txtSendQr"
+                                    android:layout_centerHorizontal="true"
+                                    app:layout_constraintBottom_toTopOf="@id/txtSendQr"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_send_payment_link_illustration" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/txtSendQr"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:background="@drawable/bg_collect_menu_lbl"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_8sdp"
+                                    android:text="@string/sms_e_mail_link"
+                                    android:textColor="@color/btn_text"
+                                    android:textSize="@dimen/_10ssp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/imageView4"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:background="@drawable/bg_collect_menu"
+                            android:elevation="6dp"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+
+
+                            >
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/rlCollectCash"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="@{()-> viewModel.onCollectCash()}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icCollectCash"
+                                    android:layout_width="@dimen/_54sdp"
+                                    android:layout_height="@dimen/_54sdp"
+                                    android:layout_centerHorizontal="true"
+                                    app:layout_constraintBottom_toTopOf="@id/txtCollectCash"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_collect_cash_illustration" />
+
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/txtCollectCash"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:background="@drawable/bg_collect_menu_lbl"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_8sdp"
+                                    android:text="@string/cash"
+                                    android:textColor="@color/btn_text"
+                                    android:textSize="@dimen/_10ssp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:id="@+id/imageView5"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:background="@drawable/bg_collect_menu"
+                            android:elevation="6dp"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/imageView4"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/rlComingSoon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="@{()-> viewModel.onTapToCard()}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/icTapCard"
+                                    android:layout_width="81dp"
+                                    android:layout_height="81dp"
+                                    android:layout_centerHorizontal="true"
+                                    app:layout_constraintBottom_toTopOf="@id/txtComingSoon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_nfc_card" />
+
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/txtComingSoon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:background="@drawable/bg_collect_menu_lbl"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_8sdp"
+                                    android:text="@string/cards"
+                                    android:textColor="@color/btn_text"
+                                    android:textSize="@dimen/_10ssp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/imageView6"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_16sdp"
+                            android:background="@drawable/bg_collect_menu"
+                            android:elevation="6dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                            >
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/loyaltypoint"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/loyaltypoint1"
+                                    android:layout_width="100dp"
+                                    android:layout_height="70dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_20sdp"
+                                    app:layout_constraintBottom_toTopOf="@id/txtloyalitypoint"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.0"
+                                    app:srcCompat="@drawable/loyalty_point_1" />
+
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/txtloyalitypoint"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:background="@drawable/bg_collect_menu_lbl"
+                                    android:gravity="center"
+                                    android:padding="@dimen/_8sdp"
+                                    android:text="@string/loyalty_point"
+                                    android:textColor="@color/btn_text"
+                                    android:textSize="@dimen/_10ssp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

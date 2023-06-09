@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.wl_softpos_sdk.common.model.CollectModel" />
+
+        <variable
+            name="errorModel"
+            type="com.example.wl_softpos_sdk.common.model.CollectionErrorModel" />
+
+        <variable
+            name="viewModel"
+            type="com.example.wl_softpos_sdk.view.collect.send_link.SendPaymentLinkViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_screen">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_overlay"
+                android:orientation="vertical">
+
+                <com.example.wl_softpos_sdk.view.arclayout.ArcLayout
+                    android:id="@+id/arcLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/arc_layout_elevation"
+                    app:arc_cropDirection="cropOutside"
+                    app:arc_height="@dimen/arc_height"
+                    app:arc_position="bottom"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#ffffff"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:paddingBottom="@dimen/_16sdp">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtTotalPayableLabel"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:text="@string/total_payable"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtTotalPayableAmt"
+                            style="@style/TextViewStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@{String.format(@string/rs,model.totalAmount)}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/amount_text_view_size"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTotalPayableLabel" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_mobile"
+                            errorText="@{errorModel.mobileNoErrorMsg}"
+                            style="@style/EditTextInputLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_12sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            app:endIconDrawable="@drawable/ic_mobile_icon"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/bg_btn"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTotalPayableAmt">
+
+                            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                                android:id="@+id/edt_mobile"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusedByDefault="true"
+                                android:hint="@string/mobile_number"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:text="@={model.mobileNo}"
+                                android:textSize="@dimen/editText_text_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_email"
+                            style="@style/EditTextInputLayoutStyle"
+                            errorText="@{errorModel.emailIdErrorMsg}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            app:endIconDrawable="@drawable/ic_mail"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/bg_btn"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_input_mobile">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edt_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email id(Optional)"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:text="@={model.emailId}"
+                                android:textSize="@dimen/editText_text_size" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_name"
+                            style="@style/EditTextInputLayoutStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_32sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            app:endIconDrawable="@drawable/ic_person"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/bg_btn"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_input_email">
+
+                            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                                android:id="@+id/edt_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/customer_name_optional"
+                                android:maxLength="30"
+                                android:maxLines="1"
+                                android:text="@={model.customerName}"
+                                android:textSize="@dimen/editText_text_size" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.example.wl_softpos_sdk.view.arclayout.ArcLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btn_proceed"
+                    style="@style/ButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/arc_button_layout_elevation"
+                    android:onClick="@{()-> viewModel.onProceed(model)}"
+                    android:text="@string/proceed"
+                    app:layout_constraintBottom_toBottomOf="@+id/arcLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/arcLayout" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>
+

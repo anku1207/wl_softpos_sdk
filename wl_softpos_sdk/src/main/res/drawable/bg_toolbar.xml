@@ -1,0 +1,37 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:color="@android:color/white"
+    tools:targetApi="lollipop">
+
+
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+
+            <gradient
+                android:startColor="@color/bg_btn"
+                android:endColor="@color/colorSecondary"
+                android:angle="135"/>
+            <!--            <solid android:color="@color/bg_btn" />-->
+            <!--            <stroke-->
+            <!--                android:width="@dimen/_2sdp"-->
+            <!--                android:color="@color/bg_btn" />-->
+
+
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+
+            <gradient
+                android:startColor="@color/bg_btn"
+                android:endColor="@color/colorSecondary"
+                android:angle="180"/>
+            <!--            <solid android:color="@color/bg_btn" />-->
+            <!--            <stroke-->
+            <!--                android:width="@dimen/_2sdp"-->
+            <!--                android:color="@color/bg_btn" />-->
+
+
+        </shape>
+    </item>
+</ripple>

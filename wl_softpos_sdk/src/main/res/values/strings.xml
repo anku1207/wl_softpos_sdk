@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="totalamount">TotalAmount</string>
+    <string name="generate_bharat_qr">Generate Bharat Qr</string>
+    <string name="rs">\u20B9%1$s</string>
+    <string name="toolbar_title_scan_qr">Scan QR Code</string>
+    <string name="toolbar_title_collect_amount">Collect Amount</string>
+    <string name="toolbar_title_payment_link">Send SMS/E-mail link</string>
+    <string name="toolbar_title_login">Login</string>
+    <string name="toolbar_title_collect_cash">Collect Cash</string>
+    <string name="toolbar_title_tap_to_card">Cards</string>
+    <string name="please_wait">Please wait</string>
+    <string name="toolbar_title_transaction_Status">Transaction Status</string>
+
+
+    <string name="sms_e_mail_link">SMS/E-mail Link</string>
+    <string name="scan_bharat_qr">Scan UPI/Bharat QR</string>
+    <string name="cash">Cash</string>
+    <string name="loyalty_point">Loyalty Point</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="cards">Cards</string>
+
+
+    //Transaction Status
+    <string name="check_status">Check Status</string>
+    <string name="resend_link">Resend Link</string>
+    <string name="payment_link_has_been_sent_to">Payment link successfully sent to</string>
+    <string name="transaction_status_small">Transaction Status</string>
+    <string name="await_pay_confirm">Awaiting payment confirmation</string>
+
+    <!-- Custom Dialog  -->
+    <string name="btn_negative_custom_dialog">No</string>
+    <string name="btn_positive_custom_dialog">Yes</string>
+    <string name="btn_ok_custom_dialog">OK</string>
+    <string name="dialog_msg_login">Login…</string>
+
+    <string name="msg_sms_link_resend">Link Send</string>
+    <string name="title_mobile_no_diff">Mobile number different</string>
+    <string name="msg_mobile_no_diff">The entered mobile number is different than the customer\'s registered mobile number.\\n\\nDo you want to proceed?</string>
+
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="btn_ok">OK</string>
+
+    <string name="payment_link_sent_success_message">Payment Link Sent Successfully</string>
+    <string name="mobile_number_blank_error">Please enter mobile no</string>
+    <string name="mobile_number_invalid_error">Please enter valid mobile no</string>
+    <string name="email_invalid_error">Please enter valid email id</string>
+    <string name="mobile_number_optional">Mobile Number (Optional)</string>
+    <string name="proceed">Proceed</string>
+    <string name="mobile_number">Mobile Number</string>
+
+    <string name="customer_name_optional">Customer Name (Optional)</string>
+    <string name="total_payable">Amount Payable</string>
+    <string name="btn_positive_no_internet">Collect via QR</string>
+    <string name="transaction_cancelled_message">Your Transaction has been cancelled</string>
+    <string name="enable_nfc">Enable NFC</string>
+    <string name="nfc_not_enabled_message">Card payment requires NFC to be enabled. Please enable NFC from settings.</string>
+    <string name="nfc_not_enabled_title">Please enable NFC</string>
+    <string name="nfc_not_supported_title">NFC support not found.</string>
+    <string name="nfc_not_supported_message">Card payment requires NFC supported device. Your device does not have NFC support. Please use other payment methods.</string>
+    <string name="ok">OK</string>
+    <string name="cancel_small">Cancel</string>
+    <string name="email_id_optional">E-mail ID (Optional)</string>
+
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="arc_height">@dimen/_20sdp</dimen>
+    <dimen name="arc_height_small">@dimen/_20sdp</dimen>
+    <dimen name="card_corner_radius">@dimen/_8sdp</dimen>
+
+    <dimen name="chip_corner_radius">@dimen/_16sdp</dimen>
+
+    <dimen name="arc_layout_elevation">@dimen/_4sdp</dimen>
+    <dimen name="arc_button_layout_elevation">@dimen/_5sdp</dimen>
+
+
+    <dimen name="amount_text_view_size">@dimen/_24ssp</dimen>
+
+    <dimen name="editText_text_size">@dimen/_12ssp</dimen>
+    <dimen name="custom_peek_height">@dimen/_250sdp</dimen>
+    <dimen name="label_text_size">@dimen/_8ssp</dimen>
+
+    <dimen name="pager_margin">@dimen/_16sdp</dimen>
+    <dimen name="viewPagerMargin">@dimen/_150sdp</dimen>
+
+    <dimen name="scale_8dp">8dp</dimen>
+    <dimen name="scale_10dp">10dp</dimen>
+
+</resources>
